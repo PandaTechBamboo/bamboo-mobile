@@ -1,4 +1,4 @@
-import Button from './components/Button';
+import Button from './components/MyButton';
 
 import ImageViewer from './components/ImageViewer';
 
