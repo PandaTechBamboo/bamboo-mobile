@@ -10,6 +10,8 @@ const MyButton = ({ style, theme, label, onPress }) => {
         return [styles.button, styles.primaryButton];
       case 'secondary':
         return [styles.button, styles.secondaryButton];
+      case 'calendar':
+        return [styles.calendar];
       default:
         return styles.button;
     }
@@ -18,8 +20,8 @@ const MyButton = ({ style, theme, label, onPress }) => {
   if (theme == 'calendar-icon') {
     const calendarIcon = require('../assets/images/calendar-icon.png'); 
     return (
-      <TouchableOpacity style = {[getButtonStyle('primary'), style]} onPress={onPress}>
-        <ImageViewer imageSource = {calendarIcon}/>
+      <TouchableOpacity style = {[getButtonStyle('calendar'), style]} onPress={onPress}>
+        <ImageViewer theme='calendar' imageSource = {calendarIcon}/>
       </TouchableOpacity>
     )
   }
@@ -48,6 +50,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#000000',
     fontSize: 16,
+  },
+  calendar: {
+    height: 10,
   },
 });
 

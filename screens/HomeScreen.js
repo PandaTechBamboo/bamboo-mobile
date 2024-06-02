@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, Button, StyleSheet } from 'react-native';
+
+import ImageViewer from '../components/ImageViewer'
+import MyButton from '../components/MyButton'
 
 const calendarIcon = require('../assets/images/calendar-icon.png');
 
@@ -9,6 +12,7 @@ function HomeScreen({ navigation }) {
       <Text style={styles.leftText}>PTBamboo</Text>
 
       <MyButton theme='calendar-icon' onPress={() => navigation.navigate('MonthNavigationScreen')}/>
+        
 
       <Button
         title="Go to Details"
@@ -25,10 +29,11 @@ const styles = StyleSheet.create({
         flexDirection:'row', 
         alignItems:'center', 
         justifyContent:'center',
-        backgroundColor: '#465',
+        backgroundColor: '#D9D9D9',
     },
     leftText: {
         marginRight: 50,
+        color: '#777070',
     },
     rightText: {
 
