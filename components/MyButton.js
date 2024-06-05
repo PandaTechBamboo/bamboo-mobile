@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import ImageViewer from './ImageViewer'
 
-const MyButton = ({ style, theme, label, onPress }) => {
+const MyButton = ({ text, style, theme, label, onPress }) => {
   // Define styles based on the theme prop
   const getButtonStyle = (themeStyle) => {
     switch (themeStyle) {
@@ -17,14 +17,17 @@ const MyButton = ({ style, theme, label, onPress }) => {
     }
   };
 
-  if (theme == 'calendar-icon') {
-    const calendarIcon = require('../assets/images/calendar-icon.png'); 
-    return (
-      <TouchableOpacity style = {[getButtonStyle('calendar'), style]} onPress={onPress}>
-        <ImageViewer theme='calendar' imageSource = {calendarIcon}/>
-      </TouchableOpacity>
-    )
+  switch (theme) {
+    case 'calendar-icon': {
+      const calendarIcon = require('../assets/images/calendar-icon.png'); 
+      return (
+        <TouchableOpacity style = {[getButtonStyle('calendar'), style]} onPress={onPress}>
+          <ImageViewer theme='calendar' imageSource = {calendarIcon}/>
+        </TouchableOpacity>
+      )
+    }
   }
+
 
   return (
     <TouchableOpacity style={[getButtonStyle(theme), style]} onPress={onPress}>
@@ -53,6 +56,9 @@ const styles = StyleSheet.create({
   },
   calendar: {
     height: 10,
+  },
+  toMonthNavigation: {
+
   },
 });
 

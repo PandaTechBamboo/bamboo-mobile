@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
     borderRadius: 18,
   },
   calendar: {
-    height: 10,
-    width: 10,
+    height: 35,
+    width: 35,
     marginRight: 50,
+    marginTop: -15,
   }
 
 });
