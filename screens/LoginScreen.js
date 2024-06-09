@@ -8,7 +8,6 @@ import { useFonts } from 'expo-font';
 import React, { useState } from 'react';
 
 
-
 const pandaImage = require('../assets/images/panda-with-highlight.png');
 
 export default function LoginScreen({navigation}) {
@@ -19,29 +18,35 @@ export default function LoginScreen({navigation}) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    function checkLogin() {
+
+    }
     
     return (
         <View style={styles.container}>
           <View style={styles.title}>
-            <Text>
+            <Text id = "title">
               BAMBOO
             </Text>
           </View>
 
           <View style={styles.imageContainer}>
-            <ImageViewer 
+            <ImageViewer id = "panda-image"
               imageSource = {pandaImage} 
             />
           </View>
 
           <View style={styles.inputContainer}>
             <TextInput
+              id = "username-input"
                 style={styles.input}
                 placeholder="Username"
                 value={username}
                 onChangeText={setUsername}
             />
             <TextInput
+                id = "password-input"
                 style={styles.input}
                 placeholder="Password"
                 value={password}
@@ -52,6 +57,7 @@ export default function LoginScreen({navigation}) {
 
           <View style={styles.footerContainer}>
             <MyButton 
+            id="login-button"
             style={styles.button} 
             theme="basic" 
             label="Login"
