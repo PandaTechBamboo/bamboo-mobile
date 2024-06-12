@@ -13,7 +13,7 @@ function TopRow({ navigation }) {
     const [fontsLoaded] = useFonts({
         'IrishGrover-Regular': require('../assets/fonts/IrishGrover-Regular.ttf'),
         'Itim-Regular' : require('../assets/fonts/Itim-Regular.ttf'),
-      });
+    });
 
     if (!fontsLoaded) {
         return <AppLoading/>
@@ -25,7 +25,7 @@ function TopRow({ navigation }) {
 
         <MyButton id="calendar-icon" theme='calendar-icon' onPress={() => navigation.navigate('MonthNavigationScreen')}/>
 
-        <TouchableOpacity id = "current-day" onPress={() => navigation.navigate('Details')} style={styles.rightTextContainer}>
+        <TouchableOpacity id = "current-day" onPress={() => navigation.navigate('Details')}>
             <Text style = {styles.rightText}>May 2027</Text>
         </TouchableOpacity>
     </View>  
@@ -40,20 +40,16 @@ const styles = StyleSheet.create({
         alignItems:'center', 
         justifyContent:'center',
         backgroundColor: '#D9D9D9',
+        flex: 70,
     },
     leftText: {
         color: '#777070',
         fontFamily: 'IrishGrover-Regular',
-        fontSize: 40,
-        width: 200,
         textAlign: 'center',
         marginRight: 25,
     },
-    rightTextContainer: {
-        width: 200,
-    },
+
     rightText: {
         fontFamily: 'Itim-Regular',
-        fontSize: 40,
     }
 })

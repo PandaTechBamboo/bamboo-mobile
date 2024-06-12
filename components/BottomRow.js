@@ -1,7 +1,8 @@
 import React from 'react'
+
 import {View, StyleSheet} from 'react-native'
 
-function FiltersRow() {
+function BottomRow() {
     return (
         <View style={styles.container}>
 
@@ -9,14 +10,11 @@ function FiltersRow() {
     )
 }
 
-export default FiltersRow;
-
+export default BottomRow;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 50,
+        flex: 90,
         backgroundColor: '#D9D9D9',
     }
 })
-
-
