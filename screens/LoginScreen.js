@@ -1,19 +1,17 @@
 import MyButton from '../components/MyButton';
 import ImageViewer from '../components/ImageViewer';
 
-import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 
 import React, { useState } from 'react';
 
-
-const pandaImage = require('../assets/images/panda-with-highlight.png');
-
 export default function LoginScreen({navigation}) {
 
     const [fontsLoaded] = useFonts({
         'IrishGrover-Regular': require('../assets/fonts/IrishGrover-Regular.ttf'),
+        'Itim-Regular' : require('../assets/fonts/Itim-Regular.ttf'),
       });
 
     const [username, setUsername] = useState('');
@@ -22,110 +20,212 @@ export default function LoginScreen({navigation}) {
     function checkLogin() {
 
     }
-    
-    return (
-        <View style={styles.container}>
-          <View style={styles.title}>
-            <Text id = "title">
-              BAMBOO
-            </Text>
-          </View>
 
-          <View style={styles.imageContainer}>
-            <ImageViewer id = "panda-image"
-              imageSource = {pandaImage} 
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <TextInput
-              id = "username-input"
-                style={styles.input}
-                placeholder="Username"
-                value={username}
-                onChangeText={setUsername}
-            />
-            <TextInput
-                id = "password-input"
-                style={styles.input}
-                placeholder="Password"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-            />
+    /////////////////////////////////// Title
+    function TitleText(){
+      return (
+        <View style={titleStyles.titleContainer}>
+          <Text style={titleStyles.title}>
+            BAMBOO
+          </Text>
         </View>
+      )
+    }
 
-          <View style={styles.footerContainer}>
-            <MyButton 
-            id="login-button"
-            style={styles.button} 
-            theme="basic" 
-            label="Login"
-            onPress={() => navigation.navigate('Home')}
-            />
-        </View>
-          
+    const titleStyles = StyleSheet.create({
+      titleContainer:{
+        color: '#000',
+        flex: 5,
+        backgroundColor: '#00FF00',
+        flexDirection: 'column',
+      },
+      title: {
+        fontFamily: 'IrishGrover-Regular',
+        flex: 1,
+        fontSize: 70,
+      },
+    })
 
-          <StatusBar style="auto" />
-        </View>
-      );
-}
+    /////////////////////////////////// Panda Logo
+    const pandaImage = require('../assets/images/panda-with-highlight.png');
 
-/*
-<View style={styles.container}>
-          <View style={styles.title}>
-            <Text>
-              BAMBOO
-            </Text>
-          </View>
-          <View style={styles.imageContainer}>
-            <ImageViewer 
-              imageSource = {pandaImage} 
-            />
-          </View>
-          
-          <StatusBar style="auto" />
-          
-        </View>
-*/ 
+    function PandaLogo() {
+      return (
+        <></>
+      )
+    }
 
-const styles = StyleSheet.create({
-    title:{
-      color: '#000',
-      marginTop: 50,
-    },
-    container: {
-      flex: 1,
-      backgroundColor: '#FFFFFF',
-      alignItems: 'center',
-    },
-    imageContainer: {
-      paddingTop: 58,
-    },
-    inputContainer: {
+    const logoStyles = StyleSheet.create({
+      imageContainer: {
+        backgroundColor: '#00FF00',
+      },
+      image:{
+        // 5:6 proportions
+        width: 200,
+        height: 240,
+        borderRadius: 18,
+      }
+    })
+
+    /////////////////////////////////// Username-Password Input
+    function UsernamePasswordInput(){
+      return(
+        <></>
+      )
+    }
+
+    const inputStyles = StyleSheet.create({
+      inputContainer: {
         width: '80%',
         alignItems: 'center',
-        marginVertical: 20,
-    },
-    input: {
+        flex: 5,
+      },
+      input: {
+          width: 300,
+          height: 40,
+          borderColor: '#ccc',
+          borderWidth: 1,
+          borderRadius: 5,
+          paddingHorizontal: 10,
+          fontFamily: 'Itim-Regular',
+          color: '#FFFFFF',
+          backgroundColor: '#D9D9D9',
+          paddingLeft: 15,
+          fontStyle: 'italic',
+          fontSize: 17,
+          flex: 5,
+      },
+    })
+
+    /////////////////////////////////// Sign In Button
+    function SignInButton() {
+      return (
+        <View style={signInStyles.footerContainer}>
+          <TouchableOpacity style={signInStyles.button} onPress={() => navigation.navigate('Home')}>
+            <Text style={signInStyles.buttonText}>Sign in</Text>
+          </TouchableOpacity>
+        </View>)
+    }
+
+    const signInStyles = StyleSheet.create({
+      button: {
+        width: 80,
+        height: 80,
+        borderRadius: 50,
+        backgroundColor: '#726969',
+        flexDirection: 'column',
+        paddingTop: 30,
+      },
+      footerContainer: {
+        alignItems: 'center',
+        flexDirection: 'column',
+      },
+      buttonText: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        flex: 1,
+        textAlign: 'center',
+        fontFamily: 'Itim-Regular',
+      },
+    })
+
+    /////////////////////////////////// Rectangle Buttons
+    function RectangleButtons() {
+      return (
+        <View>
+          <TouchableOpacity style={buttonsStyles.buttonContainer} onPress={() => navigation.navigate('SignUp')}>
+            <Text style={signInStyles.text}>Sign Up</Text>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity style={buttonsStyles.buttonContainer} onPress={() => navigation.navigate('Home')}>
+            <Text style={signInStyles.text}>Continue as a Guest</Text>
+          </TouchableOpacity>
+        </View>
+      )
+      
+    }
+
+    const buttonsStyles = StyleSheet.create({
+      buttonContainer: {
         width: 300,
         height: 40,
         borderColor: '#ccc',
         borderWidth: 1,
         borderRadius: 5,
         paddingHorizontal: 10,
-        marginTop: 10,
-    },
-    footerContainer: {
-      marginTop: 50,
-      alignItems: 'center',
-    },
-    customFontText: {
-        fontFamily: 'IrishGrover-Regular', // Replace with the actual font family name
-        fontSize: 24,
+        fontFamily: 'Itim-Regular',
+        color: '#FFFFFF',
+        backgroundColor: '#D9D9D9',
+        paddingLeft: 15,
+        fontStyle: 'italic',
+        fontSize: 17,
       },
-    button: {
-        width: 300,
+      text: {
+        textAlign: 'center',
+      }
+    })
+
+
+    /////////////////////////////////// Main return
+    
+    return (
+        <View style={styles.container}>
+
+          <View style={styles.gap}/>
+          <TitleText/>
+
+          <View style={styles.gap}/>
+          <View style={logoStyles.imageContainer}>
+            <ImageViewer theme="basic" imageSource={pandaImage}/>
+          </View>
+
+          <View style={styles.gap}/>
+          
+          <View style={inputStyles.inputContainer}>
+          <TextInput
+              style={inputStyles.input}
+              placeholder="Username..."
+              value={username}
+              onChangeText={setUsername}
+          />
+         <View style={styles.miniGap}/>
+
+          <TextInput
+            style={inputStyles.input}
+            placeholder="Password..."
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+        </View>
+
+        <View style={styles.gap}/>
+
+          <SignInButton/>
+
+          <RectangleButtons/>
+        
+          <StatusBar style="auto" />
+        </View>
+      );
+}
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#FFFFFF',
+      alignItems: 'center',
+      flexDirection: 'column',
+    },
+    gap: {
+      flex: 2,
+      backgroundColor: '#FF000000'
+    },
+    miniGap: {
+      flex: 1,
+      backgroundColor: '#FF000000'
     }
-  });
+  }
+);
   

@@ -14,8 +14,8 @@ export default function ImageViewer({ theme, imageSource, selectedImage }) {
 
 const styles = StyleSheet.create({
   image: {
-    width: 250,
-    height: 300,
+    width: 200,
+    height: 240,
     borderRadius: 18,
   },
   calendar: {
