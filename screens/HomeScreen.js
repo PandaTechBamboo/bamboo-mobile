@@ -5,7 +5,6 @@ import { TouchableOpacity, View, Text, Button, StyleSheet, SafeAreaView, Image, 
 import ImageViewer from '../components/ImageViewer'
 import TopRow from '../components/TopRow'
 import FiltersRow from '../components/FiltersRow'
-import SearchBar from '../components/SearchBar'
 import TotalEvents from '../components/TotalEvents'
 import MyButton from '../components/MyButton'
 import { useFonts } from 'expo-font';
@@ -27,29 +26,66 @@ function HomeScreen({ navigation }) {
         return <AppLoading/>
     }*/
 
-    const [search, setSearch] = useState('');
+    const [searchInput, setSearchInput] = useState('');
+
+    const searchBarStyles = StyleSheet.create({
+        container: {
+            flex: 40,
+            alignItems:'center', 
+            justifyContent:'center',
+            backgroundColor: '#FFFFFF',
+            flexDirection: 'row',
+            marginTop: 0,
+        },
+        gap: {
+            flex: 1,
+        },
+        searchContainer: {
+            flex: 8,
+            backgroundColor: '#D9D9D9',
+            borderRadius: 20,
+        },
+        searchText: {
+            fontFamily: 'Itim-Regular',
+            paddingLeft: 20,
+        }
+    })
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-        <TopRow navigation={navigation}/>
-        <View style={styles.gap}/>
+        <View style={styles.container}>
+            <TopRow navigation={navigation}/>
+            <View style={styles.gap}/>
 
-        <FiltersRow/>
-        <View style={styles.gap}/>
-
-
-        <SearchBar navigation={navigation} style={styles.searchBar}/>
-        <View style={styles.gap}/>
-
-        <TotalEvents/>
-        <View style={styles.gap}/>
-
-        <MonthView/>
-        <View style={styles.gap}/>
-
-        <BottomRow/>
+            <FiltersRow/>
+            <View style={styles.gap}/>
 
 
+            <View style={searchBarStyles.container}>
+                <View style={searchBarStyles.gap}/>
+                <View style={searchBarStyles.searchContainer}>
+                    <TextInput 
+                        style={searchBarStyles.searchText}
+                        placeholder="Search by name or keyword.."
+                        value={searchInput}
+                        onChangeText={setSearchInput}
+                    />
+                </View>
+                <View style={searchBarStyles.gap}/>
+            </View>
+
+            
+
+            <View style={styles.gap}/>
+
+            <TotalEvents/>
+            <View style={styles.gap}/>
+
+            <MonthView/>
+            <View style={styles.gap}/>
+
+            <BottomRow/>
+        </View>
         
     </SafeAreaView>
     
@@ -59,48 +95,21 @@ function HomeScreen({ navigation }) {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-    search: {
-        borderRadius: 20,
-    },
-    searchBar: {
-
-    },
-    searchIcon: {
-        flex: 1,
-    },
-    searchIconContainer: {
-        flex: 1,
-    },
     safeAreaView: {
         flex: 1,
-        backgroundColor: '#D9D9D9',
-
-    },
-    topRow: {
-        flexDirection:'row', 
-        alignItems:'center', 
-        justifyContent:'center',
-        backgroundColor: '#D9D9D9',
-    },
-    leftText: {
-        color: '#777070',
-        fontFamily: 'IrishGrover-Regular',
-        fontSize: 40,
-        width: 200,
-        textAlign: 'center',
-        marginRight: 25,
-    },
-    rightTextContainer: {
-        width: 200,
-    },
-    rightText: {
-        fontFamily: 'Itim-Regular',
-        fontSize: 40,
+        alignItems: 'center',
+        flexDirection: 'column',
     },
     gap: {
         flex: 15,
         backgroundColor: '#FFFFFF',
     },
-    searchBar: {
+    container: {
+        flex: 1,
+        backgroundColor: '#D9D9D9',
+        width: 500,
     }
+
+
+
 })
