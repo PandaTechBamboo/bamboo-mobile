@@ -56,7 +56,9 @@ export default function LoginScreen({navigation}) {
 
     const logoStyles = StyleSheet.create({
       imageContainer: {
+        flexDirection: 'column',
         flex: 190,
+        backgroundColor: '#00FF00',
       },
       image:{
         // 5:6 proportions
@@ -89,7 +91,7 @@ export default function LoginScreen({navigation}) {
           backgroundColor: '#D9D9D9',
           paddingLeft: 15,
           fontStyle: 'italic',
-          fontSize: 17,
+          fontSize: 25,
           flex: 40,
       },
     })
@@ -106,24 +108,25 @@ export default function LoginScreen({navigation}) {
 
     const signInStyles = StyleSheet.create({
       button: {
-        width: 80,
-        height: 80,
-        borderRadius: 50,
+        flex: 1,
+        aspectRatio: 1,
+        borderRadius: 100,
         backgroundColor: '#726969',
         flexDirection: 'column',
-        paddingTop: 30,
       },
       container: {
         alignItems: 'center',
         flexDirection: 'column',
         flex: 100,
+        backgroundColor: '#00FF00',
       },
       buttonText: {
         color: '#FFFFFF',
-        fontSize: 16,
+        fontSize: 25,
         flex: 1,
         textAlign: 'center',
         fontFamily: 'Itim-Regular',
+        textAlginVertical: 'center',
       },
     })
 
@@ -147,7 +150,9 @@ export default function LoginScreen({navigation}) {
 
     const buttonsStyles = StyleSheet.create({
       container: {
-        flex: 100
+        flex: 100,
+        
+
       },
       buttonContainer: {
         width: 300,
@@ -161,13 +166,16 @@ export default function LoginScreen({navigation}) {
         backgroundColor: '#726969',
         paddingLeft: 15,
         fontStyle: 'italic',
-        fontSize: 17,
+        fontSize: 25,
+
+        justifyContent: 'center',
       },
       text: {
         textAlign: 'center',
         color: '#FFFFFF',
         fontFamily: 'Itim-Regular',
-        paddingTop: 7,
+        fontSize: 25,
+
       }
     })
 
@@ -181,7 +189,7 @@ export default function LoginScreen({navigation}) {
 
         <View style={{flex: 25}}/>
         <View style={logoStyles.imageContainer}>
-          <ImageViewer theme="basic" imageSource={pandaImage}/>
+          <ImageViewer theme="panda-image" imageSource={pandaImage}/>
         </View>
 
         <View style={{flex: 25}}/> 

@@ -4,6 +4,9 @@ export default function ImageViewer({ theme, imageSource, selectedImage }) {
   const theImage = selectedImage ? {
     uri: selectedImage} : imageSource;
 
+  if (theme == "panda-image") {
+    return <Image source={theImage} style={styles.pandaImage}/>
+  }
   if (theme == 'calendar') {
     return <Image source = {theImage} style={styles.calendar}/>
   }
@@ -13,6 +16,9 @@ export default function ImageViewer({ theme, imageSource, selectedImage }) {
 }
 
 const styles = StyleSheet.create({
+  pandaImage: {
+    height: '100%',
+  },
   image: {
     width: 160,
     height: 190,
