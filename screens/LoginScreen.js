@@ -4,20 +4,15 @@ import ImageViewer from '../components/ImageViewer';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
+import LoginScreenFlex from '../components/FlexItems';
+
+import SignInButton from '../components/LoginScreen/SignInButton';
 
 import React, { useState } from 'react';
 
 export default function LoginScreen({navigation}) {
 
-  var gapOne = 100;
-  var gapTwo = 25;
-  var gapThree = 25;
-  var gapFour = 20;
-  var gapFive = 20;
-  var gapSix = 20;
-  var gapSeven = 20;
-  var gapEight = 60;
-
+  const flexItems = LoginScreenFlex;
   const textFontSize = 20;
 
     const [fontsLoaded] = useFonts({
@@ -47,7 +42,7 @@ export default function LoginScreen({navigation}) {
 
     const titleStyles = StyleSheet.create({
       titleContainer:{
-        flex: 60,
+        flex: flexItems.titleFlex,
         flexDirection: 'column',
       },
       title: {
@@ -70,8 +65,7 @@ export default function LoginScreen({navigation}) {
     const logoStyles = StyleSheet.create({
       imageContainer: {
         flexDirection: 'column',
-        flex: 190,
-        backgroundColor: '#00FF00',
+        flex: flexItems.imageFlex,
       },
       image:{
         // 5:6 proportions
@@ -92,7 +86,7 @@ export default function LoginScreen({navigation}) {
       inputContainer: {
         width: '80%',
         alignItems: 'center',
-        flex: 100,
+        flex: flexItems.inputContainerFlex,
         fontSize: textFontSize,
       },
       input: {
@@ -107,46 +101,11 @@ export default function LoginScreen({navigation}) {
           paddingLeft: 15,
           fontStyle: 'italic',
           fontSize: textFontSize,
-          flex: 40,
+          flex: flexItems.inputFlex,
       },
     })
 
-    /////////////////////////////////// Sign In Button
-    function SignInButton() {
-      return (
-        <View style={signInStyles.container}>
-          <TouchableOpacity style={signInStyles.button} onPress={() => navigation.navigate('Home')}>
-            <Text style={signInStyles.buttonText}>Sign In</Text>
-          </TouchableOpacity>
-        </View>)
-    }
-
-    const signInStyles = StyleSheet.create({
-      button: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-        aspectRatio: 1,
-        borderRadius: 100,
-        borderStyle: 'solid',
-        borderWidth: 5,
-        borderColor: '#A3A3A3',
-        backgroundColor: '#726969',
-        flexDirection: 'column',
-      },
-      container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        flex: 100,
-      },
-      buttonText: {
-        color: '#FFFFFF',
-        fontSize: textFontSize,
-        textAlign: 'center',
-        fontFamily: 'Itim-Regular',
-      },
-    })
+    
 
     /////////////////////////////////// Rectangle Buttons
     function RectangleButtons() {
@@ -156,23 +115,22 @@ export default function LoginScreen({navigation}) {
             <Text style={buttonsStyles.text}>Sign Up</Text>
           </TouchableOpacity>
 
-          <View style={{flex: gapSeven}}/>
+          <View style={{flex: flexItems.gapSeven}}/>
 
           <TouchableOpacity style={buttonsStyles.buttonContainer} onPress={() => navigation.navigate('Home')}>
             <Text style={buttonsStyles.text}>Guest Login</Text>
           </TouchableOpacity>
         </View>
       )
-      
     }
 
     const buttonsStyles = StyleSheet.create({
       container: {
-        flex: 100,
+        flex: flexItems.buttonsContainerFlex,
       },
       buttonContainer: {
         width: 300,
-        flex: 40,
+        flex: flexItems.buttonFlex,
 
         borderColor: '#ccc',
         borderWidth: 1,
@@ -199,15 +157,15 @@ export default function LoginScreen({navigation}) {
     
     return (
       <View style={styles.container}>
-        <View style={{flex: gapOne}}/>
+        <View style={{flex: flexItems.gapOne}}/>
         <TitleText/>
 
-        <View style={{flex: gapTwo}}/>
+        <View style={{flex: flexItems.gapTwo}}/>
         <View style={logoStyles.imageContainer}>
           <ImageViewer theme="panda-image" imageSource={pandaImage}/>
         </View>
 
-        <View style={{flex: gapThree}}/> 
+        <View style={{flex: flexItems.gapThree}}/> 
         <View style={inputStyles.inputContainer}>
           <TextInput
               style={inputStyles.input}
@@ -218,7 +176,7 @@ export default function LoginScreen({navigation}) {
               onChangeText={setUsername}
           />
 
-          <View style={{flex: gapFour}}/>
+          <View style={{flex: flexItems.gapFour}}/>
 
           <TextInput
             style={inputStyles.input}
@@ -231,13 +189,13 @@ export default function LoginScreen({navigation}) {
           />
         </View>
 
-        <View style={{flex: gapFive}}/>
-        <SignInButton/>
+        <View style={{flex: flexItems.gapFive}}/>
+        <SignInButton flexItems={flexItems} textFontSize={textFontSize}/>
 
-        <View style={{flex: gapSix}}/>
+        <View style={{flex: flexItems.gapSix}}/>
         <RectangleButtons/>
 
-        <View style={{flex: gapEight}}/>
+        <View style={{flex: flexItems.gapEight}}/>
         
         <StatusBar style="auto" />
       </View>
@@ -251,14 +209,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       flexDirection: 'column',
     },
-    gap: {
-      flex: 2,
-      backgroundColor: '#FF000000'
-    },
-    miniGap: {
-      flex: 1,
-      backgroundColor: '#FF000000'
-    }
   }
 );
   
