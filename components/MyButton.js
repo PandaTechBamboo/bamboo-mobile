@@ -1,21 +1,36 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import ImageViewer from './ImageViewer'
 
-const MyButton = ({ style, theme, label, onPress }) => {
+const MyButton = ({ text, style, theme, label, onPress }) => {
   // Define styles based on the theme prop
-  const getButtonStyle = () => {
-    switch (theme) {
+  const getButtonStyle = (themeStyle) => {
+    switch (themeStyle) {
       case 'primary':
         return [styles.button, styles.primaryButton];
       case 'secondary':
         return [styles.button, styles.secondaryButton];
+      case 'calendar':
+        return [styles.calendar];
       default:
         return styles.button;
     }
   };
 
+  switch (theme) {
+    case 'calendar-icon': {
+      const calendarIcon = require('../assets/images/calendar-icon.png'); 
+      return (
+        <TouchableOpacity style = {[getButtonStyle('calendar'), style]} onPress={onPress}>
+          <ImageViewer theme='calendar' imageSource = {calendarIcon}/>
+        </TouchableOpacity>
+      )
+    }
+  }
+
+
   return (
-    <TouchableOpacity style={[getButtonStyle(), style]} onPress={onPress}>
+    <TouchableOpacity style={[getButtonStyle(theme), style]} onPress={onPress}>
       <Text style={styles.buttonText}>{label}</Text>
     </TouchableOpacity>
   );
@@ -38,6 +53,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#000000',
     fontSize: 16,
+  },
+  calendar: {
+    height: 10,
+  },
+  toMonthNavigation: {
+
   },
 });
 
