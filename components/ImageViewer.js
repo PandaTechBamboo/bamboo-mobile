@@ -10,6 +10,9 @@ export default function ImageViewer({ theme, imageSource, selectedImage }) {
   if (theme == 'calendar') {
     return <Image source = {theImage} style={styles.calendar}/>
   }
+  if (theme == 'searchIcon') {
+    return <Image source={theImage} style={styles.searchIcon}/>
+  }
   return (
     <Image source={theImage} style={styles.image} />
   );
@@ -26,10 +29,14 @@ const styles = StyleSheet.create({
     borderRadius: 18,
   },
   calendar: {
+    height: 40,
+    width: 36,
+  },
+  searchIcon: {
+    objectFit: 'contain',
     height: 35,
     width: 35,
-    marginRight: 50,
-    marginTop: -15,
+    marginLeft: 15,
   }
 
 });

@@ -21,7 +21,7 @@ const MyButton = ({ text, style, theme, label, onPress }) => {
     case 'calendar-icon': {
       const calendarIcon = require('../assets/images/calendar-icon.png'); 
       return (
-        <TouchableOpacity style = {[getButtonStyle('calendar'), style]} onPress={onPress}>
+        <TouchableOpacity style = {styles.calendar} onPress={onPress}>
           <ImageViewer theme='calendar' imageSource = {calendarIcon}/>
         </TouchableOpacity>
       )
@@ -55,7 +55,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   calendar: {
-    height: 10,
+    height: 20,
+    marginTop: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   toMonthNavigation: {
 

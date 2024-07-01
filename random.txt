@@ -1,0 +1,16 @@
+<View style={{flex: flexItems.gapOne}}/>
+        <TitleText/>
+
+        <View style={{flex: flexItems.gapTwo}}/>
+        <View style={logoStyles.imageContainer}>
+          <ImageViewer theme="panda-image" imageSource={pandaImage}/>
+        </View>
+
+        <View style={{flex: flexItems.gapThree}}/> 
+        <SignIn/>
+
+        <View style={{flex: flexItems.gapSix}}/>
+
+        <View style={{flex: flexItems.gapEight}}/>
+        
+        <StatusBar style="auto" />

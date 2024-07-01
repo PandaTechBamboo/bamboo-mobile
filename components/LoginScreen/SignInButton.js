@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 
 
-function SignInButton(flexItems, textFontSize) {
+function SignInButton(flexAmount, textFontSize) {
     const signInStyles = StyleSheet.create({
         button: {
           justifyContent: 'center',
@@ -19,11 +19,11 @@ function SignInButton(flexItems, textFontSize) {
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
-          flex: flexItems.signInFlex,
+          flex: 100,
         },
         buttonText: {
           color: '#FFFFFF',
-          fontSize: textFontSize,
+          fontSize: 25,
           textAlign: 'center',
           fontFamily: 'Itim-Regular',
         },

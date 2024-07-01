@@ -8,7 +8,6 @@ import FiltersRow from '../components/FiltersRow'
 import TotalEvents from '../components/TotalEvents'
 import MyButton from '../components/MyButton'
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
 import MonthView from '../components/MonthView'
 
 import BottomRow from '../components/BottomRow'
@@ -19,6 +18,8 @@ function HomeScreen({ navigation }) {
     const [fontsLoaded] = useFonts({
         'IrishGrover-Regular': require('../assets/fonts/IrishGrover-Regular.ttf'),
         'Itim-Regular' : require('../assets/fonts/Itim-Regular.ttf'),
+        'Besley-Regular' : require('../assets/fonts/Besley-Regular.ttf'),
+        'Besley-Italic' : require('../assets/fonts/Besley-Italic.ttf')
       });
 
       /*
@@ -41,13 +42,20 @@ function HomeScreen({ navigation }) {
             flex: 1,
         },
         searchContainer: {
+            flexDirection: 'row',
             flex: 8,
             backgroundColor: '#D9D9D9',
-            borderRadius: 20,
+            borderRadius: 50,
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
         },
         searchText: {
             fontFamily: 'Itim-Regular',
             paddingLeft: 20,
+            color: '#FFFFFF',
+            fontSize: 25,
+            fontFamily: 'Besley-Italic',
         }
     })
 
@@ -64,9 +72,10 @@ function HomeScreen({ navigation }) {
             <View style={searchBarStyles.container}>
                 <View style={searchBarStyles.gap}/>
                 <View style={searchBarStyles.searchContainer}>
+                    <ImageViewer theme="searchIcon" imageSource={searchIcon}/>
                     <TextInput 
                         style={searchBarStyles.searchText}
-                        placeholder="Search by name or keyword.."
+                        placeholder="Search for an event..."
                         value={searchInput}
                         onChangeText={setSearchInput}
                     />

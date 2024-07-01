@@ -24,7 +24,7 @@ function TotalEvents() {
 
 const styles = StyleSheet.create({
     number: {
-        fontSize: 20,
+        fontSize: 40,
         fontFamily: 'Itim-Regular',
         color: '#000000'
     },
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     other: {
-        fontSize: 20,
+        fontSize: 40,
         fontFamily: 'Itim-Regular',
         color: '#505050'
     },
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         alignItems:'center', 
         justifyContent:'center',
         flex: 40,
+        backgroundColor: '#FFFFFF'
     },
 })
 

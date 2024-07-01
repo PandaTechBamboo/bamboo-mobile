@@ -12,7 +12,7 @@ const LoginScreenFlex = {
     //Another inputFlex
 
     gapFive: 20,
-    signInFlex: 100,
+    signInFlex: 200,
 
     gapSix: 20,
     buttonsContainerFlex: 100,
